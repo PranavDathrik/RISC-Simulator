@@ -1,4 +1,3 @@
-# RISC-Simulator
 
 # RISC Pipeline Simulator (in C++)
 Overview:
