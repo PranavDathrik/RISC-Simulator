@@ -1,6 +1,6 @@
 # RISC-Simulator
 
-RISC Pipeline Simulator (in C++)
+# RISC Pipeline Simulator (in C++)
 Overview:
 The RISC Pipeline Simulator is a program written in C++ that models the execution stages of a simplified RISC (Reduced Instruction Set Computing) pipeline. The program simulates the flow of instructions through different pipeline stages, including Instruction Fetch (IF), Instruction Decode (ID), Execute (EX), Memory (MEM), and Write-Back (WB).
 
@@ -13,7 +13,9 @@ Usage:
 
 Compile and run the program to observe the sequential execution of pipeline stages.
 Modify the simulation to include more detailed logic within each pipeline stage, such as instruction decoding, arithmetic operations, and data transfers.
-Cache Coherency Simulation (MESI Protocol) (in C++)
+
+
+# Cache Coherency Simulation (MESI Protocol) (in C++)
 Overview:
 The Cache Coherency Simulation program is a C++ implementation that simulates a simple cache system with the MESI (Modified, Exclusive, Shared, Invalid) protocol. It demonstrates cache read operations, handling cache hits and misses, and updating cache block states.
 
