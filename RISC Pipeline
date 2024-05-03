@@ -1,0 +1,49 @@
+#include <iostream>
+#include <vector>
+
+// Define RISC pipeline stages
+enum class PipelineStage {
+    IF,
+    ID,
+    EX,
+    MEM,
+    WB
+};
+
+// Simulate RISC pipeline processing
+void simulatePipeline() {
+    PipelineStage stage = PipelineStage::IF;
+    std::vector<std::string> stageNames = {"IF", "ID", "EX", "MEM", "WB"};
+    
+    while (true) {
+        std::cout << "Current Stage: " << stageNames[static_cast<int>(stage)] << std::endl;
+        
+        // Transition to the next stage
+        switch (stage) {
+            case PipelineStage::IF:
+                stage = PipelineStage::ID;
+                break;
+            case PipelineStage::ID:
+                stage = PipelineStage::EX;
+                break;
+            case PipelineStage::EX:
+                stage = PipelineStage::MEM;
+                break;
+            case PipelineStage::MEM:
+                stage = PipelineStage::WB;
+                break;
+            case PipelineStage::WB:
+                stage = PipelineStage::IF; // Loop back to instruction fetch
+                break;
+        }
+        
+        // Simulate clock cycle delay between pipeline stages (for demonstration)
+        std::cout << "Simulating clock cycle delay...\n";
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000)); // Adjust delay as needed
+    }
+}
+
+int main() {
+    simulatePipeline();
+    return 0;
+}
