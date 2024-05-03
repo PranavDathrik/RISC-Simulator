@@ -1,0 +1,41 @@
+#include <iostream>
+#include <unordered_map>
+
+// Cache block states (MESI)
+enum class CacheState {
+    INVALID,
+    SHARED,
+    EXCLUSIVE,
+    MODIFIED
+};
+
+// Cache block structure
+struct CacheBlock {
+    bool valid;
+    uint32_t tag;
+    uint32_t data;
+    CacheState state;
+};
+
+// Simulate cache read operation
+void cacheRead(uint32_t address, std::unordered_map<uint32_t, CacheBlock>& cache) {
+    auto it = cache.find(address);
+    if (it != cache.end() && it->second.valid && it->second.tag == (address >> 2)) {
+        std::cout << "Cache Hit: Data = " << it->second.data << std::endl;
+        it->second.state = CacheState::SHARED; // Update cache state
+    } else {
+        std::cout << "Cache Miss" << std::endl;
+        // Handle cache miss: fetch from memory and update cache
+        CacheBlock newBlock = {true, address >> 2, 0xABCD, CacheState::SHARED}; // Example data
+        cache[address] = newBlock;
+    }
+}
+
+int main() {
+    std::unordered_map<uint32_t, CacheBlock> cache;
+
+    // Simulate cache read operation
+    cacheRead(0x1000, cache); // Example read operation
+
+    return 0;
+}
